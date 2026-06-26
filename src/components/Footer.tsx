@@ -32,8 +32,6 @@ const Footer = () => {
               <ul className="space-y-4 text-foreground-muted text-[10px] font-mono tracking-widest uppercase">
                 <li><Link to="/threatforge" className="hover:text-accent transition-colors">ThreatForge</Link></li>
                 <li><Link to="/datrax" className="hover:text-accent transition-colors">DatraX</Link></li>
-                <li><Link to="/securestack" className="hover:text-accent transition-colors">SecureStack AI</Link></li>
-                <li><Link to="/blueshield" className="hover:text-accent transition-colors">BlueShield</Link></li>
               </ul>
             </div>
             <div>

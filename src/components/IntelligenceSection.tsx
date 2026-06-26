@@ -14,9 +14,9 @@ const IntelligenceSection = () => {
     setInput('');
     // Simulate AI response
     setTimeout(() => {
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: "I'm analyzing your request using the QBER model. Based on current threat vectors, your exposure in the SaaS sector is currently elevated by 14%." 
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: "I'm analyzing your request using the QBER model. Based on current threat vectors, your exposure in the SaaS sector is currently elevated by 14%."
       }]);
     }, 1000);
   };
@@ -42,7 +42,7 @@ const IntelligenceSection = () => {
             <p className="text-foreground-muted text-lg mb-12 leading-relaxed max-w-xl">
               Meet Zin, your dedicated AI risk analyst. Quantify threats, simulate attacks, and generate mitigation strategies in seconds.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-6">
               {[
                 { label: 'Risk Quantification', icon: Sparkles },
@@ -101,15 +101,15 @@ const IntelligenceSection = () => {
 
               <div className="p-6 border-t border-white/[0.06] bg-white/[0.02]">
                 <div className="relative">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Ask Zin about your risk..."
                     className="w-full bg-background-elevated border border-white/[0.06] rounded-xl py-4 px-6 text-foreground text-sm focus:outline-none focus:border-accent/50 transition-colors pr-16"
                   />
-                  <button 
+                  <button
                     onClick={handleSend}
                     className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-accent flex items-center justify-center hover:bg-accent-bright transition-colors shadow-[0_0_10px_rgba(0,48,255,0.3)]"
                   >

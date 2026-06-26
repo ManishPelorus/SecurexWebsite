@@ -3,7 +3,6 @@ import { HeroGeometric } from '../components/ui/shape-landing-hero';
 import PlatformSection from '../components/PlatformSection';
 import SolutionsSection from '../components/SolutionsSection';
 import TrustSection from '../components/TrustSection';
-import IntelligenceSection from '../components/IntelligenceSection';
 import NavigatorSection from '../components/NavigatorSection';
 import ResearchSection from '../components/ResearchSection';
 import Newsletter from '../components/Newsletter';
@@ -18,7 +17,8 @@ const Home = () => {
         title2="Enterprise Future"
       />
       <PlatformSection />
-      <IntelligenceSection />
+      {/* Removed Intelligence Section - if required in the future, simply uncomment the Intelligence Component below this line */}
+      {/* <IntelligenceSection /> */}
       <NavigatorSection />
       <SolutionsSection />
       <TrustSection />
