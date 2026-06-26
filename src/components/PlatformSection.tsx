@@ -3,6 +3,20 @@ import { Shield, Zap, Globe, Lock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const PlatformSection = () => {
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.5 + i * 0.2,
+        ease: [0.25, 0.4, 0.25, 1] as any,
+      },
+    }),
+  };
+
+
   const features = [
     { icon: Shield, title: 'Risk Quantification', desc: 'Transform complex cyber threats into clear financial impact metrics using our proprietary QBER model.' },
     { icon: Zap, title: 'Real-time Response', desc: 'Automate threat detection and response across your entire digital infrastructure with AI-driven workflows.' },
@@ -21,13 +35,33 @@ const PlatformSection = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono tracking-widest uppercase mb-8"
           >
-            The SecureXLabs Methodology
+            Validation-Driven CTEM Platform
           </motion.div>
           <h2 className="text-5xl md:text-7xl font-semibold text-foreground tracking-tight mb-8 text-gradient">
-            A Unified Platform for <br />
-            <span className="text-foreground-muted">Modern Infrastructure.</span>
+            Stop Chasing Vulnerabilities<br />
+            <span className="text-foreground-muted"> Start Eliminating Breach Paths</span>
           </h2>
+          <motion.div
+            custom={2}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-full md:max-w-[60%] mx-auto text-center"
+          >
+            <p
+              className="text-white/40 mb-6 sm:mb-8 leading-relaxed font-light tracking-wide"
+              style={{
+                fontSize: 'clamp(0.95rem, 1.2vw + 0.3rem, 1.4rem)',
+              }}
+            >
+              ThreatForge is a validation-driven CTEM platform. It continuously
+              discovers your real attack surface, proves what's actually exploitable,
+              and shows you the few fixes that eliminate the most risk,
+              so you stop guessing whether your defenses actually work.
+            </p>
+          </motion.div>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, i) => (
