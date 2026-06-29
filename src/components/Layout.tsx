@@ -19,7 +19,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         />
 
         {/* Layer 3: Subtle Glows */}
-        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-accent/10 blur-[180px] opacity-50" />
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-250 h-250 bg-accent/10 blur-[180px] opacity-50" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-[#0030FF]/5 blur-[150px] opacity-30" />
         
         {/* Layer 4: Noise Texture */}

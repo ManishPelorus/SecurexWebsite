@@ -16,7 +16,7 @@ const Newsletter = () => {
           <div className="relative z-10 text-center max-w-2xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-semibold text-foreground tracking-tighter mb-8 leading-tight">
               Stay Ahead of the <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-300 via-white/95 to-slate-300">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-slate-300 via-white/95 to-slate-300">
                 Threat Landscape.
               </span>
             </h2>

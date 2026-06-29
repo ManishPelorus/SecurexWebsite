@@ -6,12 +6,12 @@ import * as THREE from 'three';
 
 type DottedSurfaceProps = Omit<React.ComponentProps<'div'>, 'ref'>;
 
-const WAVE_SPEED = 2.8;
-const WAVE_AMPLITUDE = 62;
+// 🎯 Tuned for a subtle, professional look
+const WAVE_SPEED = 1.2; // was 2.8 – slower, more serene
+const WAVE_AMPLITUDE = 25; // was 80 – gentler undulation
 
 export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 	const { theme } = useTheme();
-
 	const containerRef = useRef<HTMLDivElement>(null);
 	const sceneRef = useRef<{
 		scene: THREE.Scene;
@@ -19,132 +19,110 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		renderer: THREE.WebGLRenderer;
 		particles: THREE.Points[];
 		animationId: number;
-		count: number;
 	} | null>(null);
 
 	useEffect(() => {
-		if (!containerRef.current) return;
+		const container = containerRef.current;
+		if (!container) return;
+
+		const width = container.clientWidth || 800;
+		const height = container.clientHeight || 600;
 
 		const SEPARATION = 150;
 		const AMOUNTX = 40;
 		const AMOUNTY = 60;
 
-		const width = containerRef.current.clientWidth || window.innerWidth;
-		const height = containerRef.current.clientHeight || window.innerHeight;
-
-		// Scene setup
 		const scene = new THREE.Scene();
 		const isDark = theme === 'dark' || !theme;
 		const fogColor = isDark ? 0x000000 : 0xffffff;
 		scene.fog = new THREE.Fog(fogColor, 2000, 10000);
 
-		const camera = new THREE.PerspectiveCamera(
-			60,
-			width / height,
-			1,
-			10000,
-		);
+		const camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
 		camera.position.set(0, 355, 1220);
+		camera.lookAt(0, 0, 0);
 
 		const renderer = new THREE.WebGLRenderer({
 			alpha: true,
 			antialias: true,
 		});
-		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 		renderer.setSize(width, height);
 		renderer.setClearColor(fogColor, 0);
 
-		containerRef.current.appendChild(renderer.domElement);
+		container.appendChild(renderer.domElement);
 
-		// Create particles
 		const positions: number[] = [];
 		const colors: number[] = [];
-
-		const geometry = new THREE.BufferGeometry();
 
 		for (let ix = 0; ix < AMOUNTX; ix++) {
 			for (let iy = 0; iy < AMOUNTY; iy++) {
 				const x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
 				const y = 0;
 				const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
-
 				positions.push(x, y, z);
-				if (isDark) {
-					colors.push(0.8, 0.8, 0.8);
-				} else {
-					colors.push(0.2, 0.2, 0.2);
-				}
+				const c = isDark ? 1.0 : 0.0;
+				colors.push(c, c, c);
 			}
 		}
 
-		geometry.setAttribute(
-			'position',
-			new THREE.Float32BufferAttribute(positions, 3),
-		);
+		const geometry = new THREE.BufferGeometry();
+		geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 		geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
 		const material = new THREE.PointsMaterial({
-			size: 8,
+			size: 10, // slightly smaller, more delicate
 			vertexColors: true,
 			transparent: true,
-			opacity: 0.6,
+			opacity: 0.7, // softer
 			sizeAttenuation: true,
 		});
 
 		const points = new THREE.Points(geometry, material);
 		scene.add(points);
 
-		// Store initial references immediately
 		sceneRef.current = {
 			scene,
 			camera,
 			renderer,
 			particles: [points],
 			animationId: 0,
-			count: 0,
 		};
 
 		const startTime = performance.now();
-		let animationId: number;
 
 		const animate = () => {
-			animationId = requestAnimationFrame(animate);
-			if (sceneRef.current) {
-				sceneRef.current.animationId = animationId;
-			}
-			
-			const elapsedTime = (performance.now() - startTime) / 1000;
-			const positionAttribute = geometry.getAttribute('position') as THREE.BufferAttribute;
-			
-			for (let i = 0; i < positionAttribute.count; i++) {
+			const animationId = requestAnimationFrame(animate);
+			if (sceneRef.current) sceneRef.current.animationId = animationId;
+
+			const elapsed = (performance.now() - startTime) / 1000;
+			const posAttr = geometry.getAttribute('position') as THREE.BufferAttribute;
+
+			for (let i = 0; i < posAttr.count; i++) {
 				const ix = Math.floor(i / AMOUNTY);
 				const iy = i % AMOUNTY;
-
 				const y =
-					Math.sin((ix + elapsedTime * WAVE_SPEED) * 0.3) * WAVE_AMPLITUDE +
-					Math.cos((iy + elapsedTime * (WAVE_SPEED * 0.9)) * 0.5) * WAVE_AMPLITUDE;
-
-				positionAttribute.setY(i, y);
+					Math.sin((ix + elapsed * WAVE_SPEED) * 0.3) * WAVE_AMPLITUDE +
+					Math.cos((iy + elapsed * (WAVE_SPEED * 0.9)) * 0.5) * WAVE_AMPLITUDE;
+				posAttr.setY(i, y);
 			}
+			posAttr.needsUpdate = true;
 
-			positionAttribute.needsUpdate = true;
 			renderer.render(scene, camera);
 		};
 
 		const handleResize = () => {
-			if (!containerRef.current) return;
-			const w = containerRef.current.clientWidth || window.innerWidth;
-			const h = containerRef.current.clientHeight || window.innerHeight;
-			if (!w || !h) return;
-
+			if (!container) return;
+			const w = container.clientWidth || 800;
+			const h = container.clientHeight || 600;
 			camera.aspect = w / h;
 			camera.updateProjectionMatrix();
 			renderer.setSize(w, h);
 		};
 
 		const resizeObserver = new ResizeObserver(handleResize);
-		resizeObserver.observe(containerRef.current);
+		resizeObserver.observe(container);
 		window.addEventListener('resize', handleResize);
+
 		animate();
 
 		return () => {
@@ -153,53 +131,52 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
 			if (sceneRef.current) {
 				cancelAnimationFrame(sceneRef.current.animationId);
-
-				sceneRef.current.scene.traverse((object: THREE.Object3D) => {
+				sceneRef.current.scene.traverse((object) => {
 					if (object instanceof THREE.Points) {
 						object.geometry.dispose();
 						if (Array.isArray(object.material)) {
-							object.material.forEach((m: THREE.Material) => m.dispose());
+							object.material.forEach((m) => m.dispose());
 						} else {
 							object.material.dispose();
 						}
 					}
 				});
-
 				sceneRef.current.renderer.dispose();
-
-				if (containerRef.current && sceneRef.current.renderer.domElement) {
-					containerRef.current.removeChild(
-						sceneRef.current.renderer.domElement,
-					);
+				if (container && sceneRef.current.renderer.domElement) {
+					container.removeChild(sceneRef.current.renderer.domElement);
 				}
 			}
 		};
-	}, []); // Removed theme dependency to prevent scene reset
+	}, []);
 
 	useEffect(() => {
 		if (!sceneRef.current) return;
 
 		const isDark = theme === 'dark' || !theme;
 		const fogColor = isDark ? 0x000000 : 0xffffff;
-		const particleColor = isDark ? 0.8 : 0.2;
+		const particleColor = isDark ? 1.0 : 0.0;
 
 		sceneRef.current.scene.fog = new THREE.Fog(fogColor, 2000, 10000);
 		sceneRef.current.renderer.setClearColor(fogColor, 0);
 
 		sceneRef.current.particles.forEach((points) => {
-			const colorAttribute = points.geometry.getAttribute('color') as THREE.BufferAttribute;
-			for (let i = 0; i < colorAttribute.count; i++) {
-				colorAttribute.setXYZ(i, particleColor, particleColor, particleColor);
+			const colorAttr = points.geometry.getAttribute('color') as THREE.BufferAttribute;
+			for (let i = 0; i < colorAttr.count; i++) {
+				colorAttr.setXYZ(i, particleColor, particleColor, particleColor);
 			}
-			colorAttribute.needsUpdate = true;
+			colorAttr.needsUpdate = true;
 		});
 	}, [theme]);
 
 	return (
 		<div
 			ref={containerRef}
-			className={cn('pointer-events-none fixed inset-0 z-[-1]', className)}
+			className={cn('relative w-full h-full', className)}
 			{...props}
 		/>
 	);
 }
+
+
+
+

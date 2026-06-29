@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Clipboard,
   BarChart2,
+  ArrowRight, // added
 } from "lucide-react";
 
 const WhyTraditional = () => {
@@ -110,6 +111,11 @@ const WhyTraditional = () => {
                     {c.title}
                   </h4>
                   <p className="mt-1 text-white/60 text-sm">{c.desc}</p>
+                  {/* New "Learn more" button */}
+                  <button className="mt-3 inline-flex items-center gap-1 rounded-full bg-slate-700/20 border border-slate-600/40 px-3 py-1 text-xs font-semibold text-white/90 hover:bg-slate-700/30 transition">
+                    Learn more
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               </motion.div>
             ))}
