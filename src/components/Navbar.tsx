@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-background-base/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.12)]'
+          ? 'bg-background-base/80 backdrop-blur-2xl border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]'
           : 'bg-transparent border-transparent'
       }`}
     >
@@ -182,7 +182,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden overflow-hidden bg-background-base/95 backdrop-blur-2xl border-b border-white/[0.06]"
+            className="md:hidden overflow-hidden bg-background-base/95 backdrop-blur-2xl border-b border-white/20"
           >
             <div className="px-4 pt-4 pb-8 space-y-1">
               {navLinks.map((link) => (
