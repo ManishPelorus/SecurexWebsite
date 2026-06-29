@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const CTEMLifecycle = () => {
   const steps = [
@@ -52,20 +53,28 @@ const CTEMLifecycle = () => {
             </p>
           </div>
 
-          <div className="mt-2 overflow-hidden rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-6">
-            <div className="grid gap-4 md:grid-cols-[repeat(5,auto)] md:items-center md:justify-between">
+          {/* Equal-height cards with connectors */}
+          <div className="mt-6 overflow-hidden rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-6">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {steps.map((item, index) => (
                 <div
                   key={item.step}
-                  className="relative rounded-[28px] border border-white/[0.08] bg-slate-950/90 p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+                  className="relative flex flex-col items-center rounded-[28px] border border-white/[0.08] bg-slate-950/90 p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] hover:border-white/20 hover:shadow-[0_25px_80px_rgba(0,0,0,0.45)] transition-all duration-300"
                 >
+                  {/* Connector arrow (only visible on large screens) */}
+                  {index < steps.length - 1 && (
+                    <div className="absolute -right-4 top-1/2 hidden -translate-y-1/2 lg:block">
+                      <ArrowRight className="h-5 w-5 text-slate-600" />
+                    </div>
+                  )}
+
                   <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-lg font-semibold text-white ring-1 ring-white/10">
                     {item.step}
                   </div>
                   <h4 className="text-lg font-semibold text-white">
                     {item.label}
                   </h4>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  <p className="mt-3 text-sm leading-relaxed text-white/60 flex-1">
                     {item.detail}
                   </p>
                 </div>
@@ -73,8 +82,8 @@ const CTEMLifecycle = () => {
             </div>
           </div>
 
-          <div className="mt-2 rounded-[32px] border border-slate-600/40 bg-slate-900/95 p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
-            <p className="text-xl font-semibold text-white">
+          <div className="mt-6 rounded-[32px] border border-slate-600/40 bg-slate-900/95 p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
+            <p className="mx-auto max-w-3xl text-center text-xl font-semibold text-white">
               Most tools stop at "remediate." ThreatForge closes the loop — it
               proves the fix actually worked.
             </p>

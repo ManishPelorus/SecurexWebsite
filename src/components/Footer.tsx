@@ -166,7 +166,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-12 border-t border-white/6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-foreground-muted text-[10px] font-mono tracking-widest uppercase">
             © 2026 SecureXLabs Security Platform. All rights reserved.
           </p>
