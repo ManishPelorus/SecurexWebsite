@@ -77,6 +77,18 @@ const CTEMLifecycle = () => {
                   <p className="mt-3 text-sm leading-relaxed text-white/60 flex-1">
                     {item.detail}
                   </p>
+
+                  {/* 🔹 NEW: Learn More button */}
+                  <button
+                    onClick={() => {
+                      console.log(`Learn more about ${item.label}`);
+                      // You can replace with navigation: window.location.href = `/learn/${item.label.toLowerCase()}`
+                    }}
+                    className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white hover:border-white/20 active:scale-95"
+                  >
+                    Learn more
+                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                  </button>
                 </div>
               ))}
             </div>
