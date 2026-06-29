@@ -40,8 +40,7 @@ const CTEMLifecycle = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.12),_transparent_20%),radial-gradient(circle_at_bottom_left,_rgba(168,85,247,0.1),_transparent_15%)]" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="space-y-2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/70">
-              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/60">
               The CTEM Lifecycle
             </div>
             <h3 className="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.02]">
@@ -74,7 +73,7 @@ const CTEMLifecycle = () => {
             </div>
           </div>
 
-          <div className="mt-2 rounded-[32px] border border-accent/20 bg-slate-900/95 p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
+          <div className="mt-2 rounded-[32px] border border-slate-600/40 bg-slate-900/95 p-5 shadow-[0_25px_80px_rgba(0,0,0,0.35)]">
             <p className="text-xl font-semibold text-white">
               Most tools stop at "remediate." ThreatForge closes the loop — it
               proves the fix actually worked.

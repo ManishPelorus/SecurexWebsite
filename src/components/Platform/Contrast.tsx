@@ -14,7 +14,7 @@ const Contrast = () => {
     <section className="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-slate-950/95 p-10">
         <div className="mx-auto max-w-6xl text-center mb-8">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-sm uppercase tracking-widest text-white/70">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/60">
             Why ThreatForge
           </div>
           <h3 className="mt-4 text-4xl md:text-5xl font-semibold text-white">
@@ -45,7 +45,7 @@ const Contrast = () => {
                   <div className="mt-1 text-base text-white/70">{row.left}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-semibold uppercase tracking-widest text-accent">
+                  <div className="text-sm font-semibold uppercase tracking-widest text-slate-300">
                     ThreatForge
                   </div>
                   <div className="mt-1 text-base text-white font-semibold">
@@ -61,44 +61,41 @@ const Contrast = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.12 }}
-            className="rounded-2xl bg-gradient-to-br from-slate-900/90 to-slate-950/95 p-8 border border-accent/8 shadow-md"
+            className="rounded-3xl bg-slate-900/95 p-8 border border-white/10 shadow-lg shadow-slate-950/20"
           >
-            <div className="flex items-start gap-5">
-              <div className="h-14 w-14 flex-shrink-0 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-2xl text-accent">
-                ⚡
-              </div>
+            <div className="space-y-5">
               <div>
-                <p className="text-sm uppercase tracking-widest text-accent/80">
+                <p className="text-sm uppercase tracking-[0.32em] text-slate-400">
                   Contrast
                 </p>
                 <h4 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
                   Modern exposure decisions, not legacy noise.
                 </h4>
-                <p className="mt-3 text-white/60 text-base">
+                <p className="mt-4 text-white/60 text-base leading-relaxed">
                   This shift lets your team focus on the few exposures that
                   truly matter — instead of thousands of theoretical
                   vulnerabilities.
                 </p>
-
-                <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-3">
-                  <a
-                    href="#"
-                    className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-base font-semibold text-black shadow"
-                  >
-                    Book a Demo
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center justify-center rounded-full border border-white/12 bg-transparent px-5 py-2 text-sm font-semibold text-white/90"
-                  >
-                    Request a Free PoC
-                  </a>
-                </div>
-                <p className="mt-4 text-xs text-white/50 italic">
-                  *ThreatForge proves what can actually breach you — and shows
-                  you the fastest way to close it.*
-                </p>
               </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a
+                  href="#"
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/12 bg-transparent px-5 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/5"
+                >
+                  Book a Demo
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/12 bg-transparent px-5 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/5"
+                >
+                  Request a Free PoC
+                </a>
+              </div>
+              <p className="text-xs text-white/50 italic">
+                *ThreatForge proves what can actually breach you — and shows you
+                the fastest way to close it.*
+              </p>
             </div>
           </motion.div>
         </div>
