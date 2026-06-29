@@ -35,7 +35,7 @@ const PlatformHero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono tracking-widest uppercase mb-4"
+            className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/60 mb-4"
           >
             Validation-Driven CTEM Platform
           </motion.div>
@@ -74,8 +74,8 @@ const PlatformHero = () => {
               }}
               className="group p-4 rounded-2xl glass glass-hover hover:-translate-y-2"
             >
-              <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                <feature.icon className="w-8 h-8 text-accent" />
+              <div className="w-16 h-16 rounded-xl bg-slate-700/20 flex items-center justify-center mb-4 group-hover:bg-slate-700/30 transition-colors">
+                <feature.icon className="w-8 h-8 text-slate-300" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
                 {feature.title}

@@ -26,7 +26,7 @@ const IndustryPreview = () => {
       <div className="rounded-[40px] border border-white/[0.08] bg-slate-950/95 p-6 shadow-[0_30px_120px_rgba(0,0,0,0.25)]">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] items-center">
           <div className="space-y-4">
-            <span className="inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs uppercase tracking-[0.32em] text-accent font-semibold">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/60">
               INDUSTRY PREVIEW
             </span>
             <h3 className="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.02]">
@@ -39,7 +39,7 @@ const IndustryPreview = () => {
             </p>
             <a
               href="#"
-              className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-5 py-3 text-sm font-semibold text-accent transition hover:bg-accent/15"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-600/40 bg-slate-700/20 px-5 py-3 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/30"
             >
               Explore industry solutions →
             </a>
@@ -54,9 +54,9 @@ const IndustryPreview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="group rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-4 transition hover:border-accent/30 hover:bg-slate-900"
+                className="group rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-4 transition hover:border-slate-600/40 hover:bg-slate-900"
               >
-                <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-accent/10 text-accent font-semibold text-lg">
+                <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-700/20 text-slate-300 font-semibold text-lg">
                   {industry.label
                     .split(" ")
                     .map((w) => w[0])

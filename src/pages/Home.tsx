@@ -29,11 +29,6 @@ const Home = () => {
       <SovereignDesign />
       <Contrast />
       <IndustryPreview />
-      {/* Removed Intelligence Section - if required in the future, simply uncomment the Intelligence Component below this line */}
-      {/* <IntelligenceSection /> */}
-      {/* <TrustSection /> */}
-      {/* <Testimonials /> */}
-      {/* <ResearchSection /> */}
       <Newsletter />
     </>
   );

@@ -35,8 +35,7 @@ const PlatformOverview = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.12),_transparent_20%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.1),_transparent_15%)]" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="space-y-4 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/70">
-              <span className="inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/60">
               Platform Overview
             </div>
             <h3 className="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.02]">
@@ -62,9 +61,9 @@ const PlatformOverview = () => {
                   duration: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group overflow-hidden rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.25)] transition hover:-translate-y-1 hover:border-accent/30"
+                className="group overflow-hidden rounded-[32px] border border-white/[0.08] bg-slate-900/95 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.25)] transition hover:-translate-y-1 hover:border-slate-600/40"
               >
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/15">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-700/20 text-slate-300 ring-1 ring-slate-600/30">
                   <span className="text-lg font-semibold">{index + 1}</span>
                 </div>
                 <h4 className="text-xl font-semibold text-white mb-3 tracking-tight">
