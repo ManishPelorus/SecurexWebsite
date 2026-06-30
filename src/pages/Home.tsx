@@ -10,7 +10,7 @@ import SovereignDesign from "../components/Platform/SovereignDesign";
 import Contrast from "../components/Platform/Contrast";
 import IndustryPreview from "../components/Platform/IndustryPreview";
 import Newsletter from "../components/Newsletter";
-import Testimonials from "../components/Testimonials";
+// import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   return (
