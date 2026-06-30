@@ -6,9 +6,9 @@ import * as THREE from 'three';
 
 type DottedSurfaceProps = Omit<React.ComponentProps<'div'>, 'ref'>;
 
-// 🎯 Tuned for a subtle, professional look
-const WAVE_SPEED = 1.2; // was 2.8 – slower, more serene
-const WAVE_AMPLITUDE = 25; // was 80 – gentler undulation
+// 🎯 Tuned for a subtle, premium background
+const WAVE_SPEED = 0.8;       // even slower, more graceful
+const WAVE_AMPLITUDE = 25;    // gentler undulation
 
 export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 	const { theme } = useTheme();
@@ -28,9 +28,10 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		const width = container.clientWidth || 800;
 		const height = container.clientHeight || 600;
 
-		const SEPARATION = 150;
-		const AMOUNTX = 40;
-		const AMOUNTY = 60;
+		// Tighter grid for more dots
+		const SEPARATION = 100;   // was 150 – denser
+		const AMOUNTX = 50;       // more columns
+		const AMOUNTY = 70;       // more rows
 
 		const scene = new THREE.Scene();
 		const isDark = theme === 'dark' || !theme;
@@ -70,10 +71,10 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
 		const material = new THREE.PointsMaterial({
-			size: 10, // slightly smaller, more delicate
+			size: 6,              // smaller dots (was 10)
 			vertexColors: true,
 			transparent: true,
-			opacity: 0.7, // softer
+			opacity: 0.5,         // softer (was 0.7)
 			sizeAttenuation: true,
 		});
 
@@ -176,7 +177,3 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		/>
 	);
 }
-
-
-
-
