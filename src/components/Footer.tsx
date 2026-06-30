@@ -31,12 +31,12 @@ const Footer = () => {
                   href: "https://www.linkedin.com/",
                   icon: Linkedin,
                 },
-                { name: "GitHub", href: "https://github.com/", icon: Github },
-                {
-                  name: "YouTube",
-                  href: "https://www.youtube.com/",
-                  icon: Youtube,
-                },
+                // { name: "GitHub", href: "https://github.com/", icon: Github },
+                // {
+                //   name: "YouTube",
+                //   href: "https://www.youtube.com/",
+                //   icon: Youtube,
+                // },
                 {
                   name: "Instagram",
                   href: "https://www.instagram.com/",

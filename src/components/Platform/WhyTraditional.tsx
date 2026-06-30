@@ -8,12 +8,11 @@ import {
   BarChart2,
   ArrowRight,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // <-- import
+import { useNavigate } from "react-router-dom";
 
 const WhyTraditional = () => {
   const navigate = useNavigate();
 
-  // 🔹 Add a unique 'id' to each challenge (match the ones in SolutionsPage)
   const challenges = [
     {
       id: "unknown-assets",
@@ -47,30 +46,32 @@ const WhyTraditional = () => {
     },
   ];
 
-  // 🔹 Navigation handler
   const handleLearnMore = (id: string) => {
-    navigate(`/solutions#challenge-${id}`);
+    navigate(`/solutions#traditional-${id}`);
   };
 
   return (
     <div className="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="rounded-2xl border border-white/[0.04] bg-slate-950/80 p-6 lg:p-8 shadow-lg">
         <div className="grid gap-6 lg:grid-cols-2 items-start">
-          {/* Left column – unchanged */}
+          {/* Left Column */}
           <div className="space-y-6">
             <div className="inline-block px-3 py-1 rounded-full bg-slate-800/40 text-slate-300 text-xs font-mono tracking-widest uppercase">
               Why Traditional Security Fails
             </div>
+
             <h3 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.02] tracking-tight">
               Security Teams Have Tools.
               <br />
               Not Clarity.
             </h3>
+
             <p className="max-w-2xl text-white/60 text-lg">
               Modern enterprises are overwhelmed by vulnerability data, alerts,
               and compliance demands. The hard question is simple — what
               actually threatens your business right now?
             </p>
+
             <div className="relative mt-4">
               <div className="rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/60 p-6 shadow-[0_30px_80px_rgba(2,6,23,0.6)]">
                 <div className="flex items-start gap-4">
@@ -87,11 +88,15 @@ const WhyTraditional = () => {
                     </p>
                   </div>
                 </div>
+
                 <div className="mt-6 flex items-center gap-3">
                   <button className="inline-flex items-center gap-3 rounded-full bg-slate-700/20 border border-slate-600/40 px-4 py-2 text-sm font-semibold text-white/90 hover:bg-slate-700/30 transition">
                     Learn why risk validation matters
                   </button>
-                  <a className="text-sm text-white/60 hover:text-white transition" href="#">
+                  <a
+                    className="text-sm text-white/60 hover:text-white transition"
+                    href="#"
+                  >
                     See customer stories
                   </a>
                 </div>
@@ -99,7 +104,7 @@ const WhyTraditional = () => {
             </div>
           </div>
 
-          {/* Right column – challenge cards with working Learn More */}
+          {/* Right Column – Challenge Cards */}
           <div className="space-y-4">
             {challenges.map((c, i) => (
               <motion.div
@@ -116,8 +121,11 @@ const WhyTraditional = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">{c.title}</h4>
+                  <h4 className="text-sm font-semibold text-white">
+                    {c.title}
+                  </h4>
                   <p className="mt-1 text-white/60 text-sm">{c.desc}</p>
+                  {/* Learn More button – now working */}
                   <button
                     onClick={() => handleLearnMore(c.id)}
                     className="mt-3 inline-flex items-center gap-1 rounded-full bg-slate-700/20 border border-slate-600/40 px-3 py-1 text-xs font-semibold text-white/90 hover:bg-slate-700/30 transition"

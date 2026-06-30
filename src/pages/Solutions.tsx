@@ -1,7 +1,7 @@
 import React from 'react';
 import SolutionsSection from '../components/SolutionsSection';
 import TrustSection from '../components/TrustSection';
-import Testimonials from '../components/Testimonials';
+// import Testimonials from '../components/Testimonials';
 import { motion } from 'motion/react';
 
 const Solutions = () => {
@@ -28,7 +28,7 @@ const Solutions = () => {
         </div>
       </section>
       <SolutionsSection />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <TrustSection />
     </div>
   );
